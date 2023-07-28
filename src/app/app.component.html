@@ -1,18 +1,22 @@
 <app-header (toggleLogin)="openLogin()"></app-header>
 
-<div style="margin: 30px;">
-  <h1 style="text-align: center;">Chat GPT Example</h1>
-  <div class="card"  *ngFor="let data of textList">
-    <div class="card-header">
-      <div class="input-group mb-3" >
-        <input type="text" [(ngModel)]="data.text" class="form-control" placeholder="Add Your Text Here">
-        <div class="input-group-append">
-          <button type="button" (click)="generateText(data)" class="btn btn-primary">Generate</button>
-        </div>
+<div class="container">
+  <!--Responses-->
+  <div class="chat-container #chatContainer">
+      <div class="card" *ngFor="let data of textList; let i = index" [id]="i === textList.length - 1 ? 'lastMessage' : ''">
+      <div class="card-body">
+        <p class="card-text" [ngClass]="{'user-text': data.isUser, 'ai-text': !data.isUser}">{{data.response || data.text}}</p>
       </div>
     </div>
-    <div class="card-body">
-      <p class="card-text">{{data.response}}</p>
+  </div>
+
+  <!--  Input-->
+  <div class="input-container">
+    <div class="input-group mb-3">
+      <textarea [(ngModel)]="inputText" class="form-control" placeholder="Add Your Text Here"></textarea>
+      <div class="input-group-append">
+        <button type="button" (click)="generateText()" class="btn btn-primary">Generate</button>
+      </div>
     </div>
   </div>
 </div>

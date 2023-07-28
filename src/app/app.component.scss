@@ -1,0 +1,28 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 90vh;
+}
+
+.card {
+  margin-bottom: 10px;
+}
+
+.chat-container {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 1rem;
+}
+
+.input-container {
+  flex-shrink: 0;
+  padding: 1rem;
+}
+
+.user-text {
+  color: blue;
+}
+
+.ai-text {
+  color: red;
+}
