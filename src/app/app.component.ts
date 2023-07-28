@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { OpenaiService } from './openai.service';
+import { LoginComponent } from "./login/login.component";
+import { MatDialog } from "@angular/material/dialog";
 
 export class textResponse{
   sno:number=1;
@@ -16,10 +18,7 @@ export class AppComponent {
 
   textList:textResponse[]=[{sno:1,text:'',response:''}];
 
-  constructor(
-    private openaiService: OpenaiService
-  ) {
-
+  constructor(private openaiService: OpenaiService, public dialog: MatDialog) {
   }
 
   generateText(data:textResponse) {
@@ -29,6 +28,10 @@ export class AppComponent {
         this.textList.push({sno:1,text:'',response:''});
       }
     });
+  }
+
+  openLogin() {
+    this.dialog.open(LoginComponent);
   }
 
 }
